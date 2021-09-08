@@ -15,11 +15,8 @@ class CreateDreamsTable extends Migration
     {
         Schema::create('dreams', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
+            $table->string('dream');
             $table->boolean('is_archive')->default(false);
-            $table->string('position')->nullable();
-            $table->string('bgcolor')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
             $table->softDeletes();

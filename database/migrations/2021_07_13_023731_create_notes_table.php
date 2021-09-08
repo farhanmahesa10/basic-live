@@ -15,14 +15,15 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->string('bg_color');
+            $table->string('title')->nullable();
+            $table->text('content')->nullable();
+            $table->string('bg_color')->nullable();
             $table->boolean('is_archive')->default(false);
             $table->boolean('reminder')->default(false);
             $table->date('reminder_date')->nullable();
             $table->time('reminder_time')->nullable();
             $table->foreignId('user_id')->constrained();
+            $table->string('order');
             $table->timestamps();
             $table->softDeletes();
         });

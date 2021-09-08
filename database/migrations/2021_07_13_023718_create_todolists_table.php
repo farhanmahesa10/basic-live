@@ -15,12 +15,13 @@ class CreateTodolistsTable extends Migration
     {
         Schema::create('todolists', function (Blueprint $table) {
             $table->id();
-            $table->text('todo');
+            $table->text('title')->nullable();
+            $table->text('todo')->nullable();
             $table->date('date')->nullable();
             $table->time('time')->nullable();
+            $table->string('bg_color')->nullable();
             $table->integer('status')->default(1);
-            $table->string('v_position')->nullable();
-            $table->string('h_position')->nullable();
+            $table->string('order')->nullable();
             $table->foreignId('dream_id')->constrained();
             $table->timestamps();
             $table->softDeletes();

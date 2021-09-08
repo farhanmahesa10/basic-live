@@ -15,11 +15,11 @@ class CreateMotivationsTable extends Migration
     {
         Schema::create('motivations', function (Blueprint $table) {
             $table->id();
-            $table->string('titile')->nullable();
+            $table->string('title')->nullable();
             $table->string('content');
-            $table->string('bgcolor')->nullable();
+            $table->string('bg_color')->nullable();
             $table->boolean('show_front')->default(false);
-            $table->string('position')->nullable();
+            $table->integer('order')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
             $table->softDeletes();

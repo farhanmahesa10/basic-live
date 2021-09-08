@@ -1,77 +1,68 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<form method="POST" action="{{ route('register') }}">
+    @csrf
+    <h2 class="text-5xl text-center">BASIC LIFE</h2>
+    <h3 class="text-md  text-center  text-2xl mt-7">Login</h3>
+    <div class="w-full">
+        <label for="name" class=" text-xl text-gray-700 relative top-6 left-2 bg-white">Name</label>
+        <input type="text" name="name" id="name" autocomplete="given-name" value="{{old('name')}}"
+            class="h-14 p-2 focus:text-lg focus:outline-none border focus:shadow-md block w-full sm:text-sm border-gray-300 rounded-md"
+            style="font-size:20px;">
+        @error('name')
+        <span class="text-red-300">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
     </div>
-</div>
+    <div class="w-full">
+        <label for="email" class=" text-xl text-gray-700 relative top-6 left-2 bg-white">Email</label>
+        <input type="text" name="email" id="email" autocomplete="given-name" value="{{old('email')}}"
+            class="h-14 p-2 focus:text-lg focus:outline-none border focus:shadow-md block w-full sm:text-sm border-gray-300 rounded-md"
+            style="font-size:20px;">
+        @error('email')
+        <span class="text-red-300">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    <div>
+        <label for="password" class=" text-xl text-gray-700 relative top-6 left-2 bg-white">Password</label>
+        <input type="password" name="password" id="password" autocomplete="given-name"
+            class="h-14 p-1 focus:outline-none border focus:shadow-md block w-full sm:text-sm border-gray-300 rounded-md"
+            style="font-size:20px;">
+        @error('password')
+        <span class="text-red-300">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    <div>
+        <label for="password-confirm" class=" text-xl text-gray-700 relative top-6 left-2 bg-white">Password</label>
+        <input type="password" name="password_confirmation" id="password-confirm" autocomplete="given-name"
+            class="h-14 p-1 focus:outline-none border focus:shadow-md block w-full sm:text-sm border-gray-300 rounded-md"
+            style="font-size:20px;">
+        @error('password')
+        <span class="text-red-300">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <button type="submit"
+        class="bg-yellow-100 w-full p-2 rounded-full mt-4 h-14 text-2xl hover:bg-gray-200">REGISTER</button>
+
+    <div class="text-xs text-center mt-4">
+        {{ __("have account?") }}
+        <a href="/login" class="hover:no-underline font-bold hover:text-gray-400">
+            Login</a>
+    </div>
+</form>
+
+
+
+
+
 @endsection
